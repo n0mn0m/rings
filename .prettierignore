@@ -1,0 +1,10 @@
+.env*
+local-storage.json
+package*.json
+README.md
+.vscode/
+.github/
+build/
+coverage/
+node_modules/
+public/
