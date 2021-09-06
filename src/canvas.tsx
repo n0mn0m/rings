@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Paper from 'paper';
-import draw from './draw';
+import fall from './images/fall.jpg';
+import next from './next';
 
 interface CanvasProps {
     width: number;
@@ -15,17 +16,22 @@ const Canvas = ({ width, height }: CanvasProps): React.ReactElement => {
             const canvas = canvasRef.current;
             if (canvas) {
                 Paper.setup(canvas);
-                draw();
+                next();
             }
         }
     }, []);
 
-    return <canvas ref={canvasRef} height={height} width={width} id="canvas" />;
-}
+    return (
+        <>
+            <canvas ref={canvasRef} data-testid="paper-canvas" height={height} width={width} id="canvas" />
+            <img src={fall} id="fall" style={{ visibility: 'hidden' }} />
+        </>
+    );
+};
 
 Canvas.defaultProps = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
 };
 
 export default Canvas;
